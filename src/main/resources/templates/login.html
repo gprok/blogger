@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<section>
+  <h1>LOGIN</h1>
+
+    <div th:if="${param.error}">
+        Invalid email and/or password
+    </div>
+
+    <form method="post" th:action="@{/login}">
+        <input type="email" name="username" id="username" />
+        <input type="password" name="password" id="password" />
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+</body>
+</html>
