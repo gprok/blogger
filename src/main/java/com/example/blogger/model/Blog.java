@@ -1,10 +1,13 @@
 package com.example.blogger.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,4 +26,9 @@ public class Blog {
 
     @ManyToOne
     private User user;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "blog_id")
+    @JsonIgnore
+    private Set<Post> posts;
 }

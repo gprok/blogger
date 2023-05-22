@@ -8,11 +8,11 @@
 <body>
 
 <section>
-  <h1>BLOGS</h1>
+  <h1>POST: <span th:text="${post.getTitle()}">Title</span> </h1>
 
-  <div th:each="blog : ${blogs}">
-    <a th:href="${'/blog/' + blog.getId()}"><h3 th:text="${blog.getTitle()}">Blog Title</h3></a>
-  </div>
+  <p th:text="${post.getContent()}">Content</p>
+
+  <p th:text="${'from the blog: ' + post.getBlog().getTitle()}">Blog info</p>
 </section>
 
 </body>
