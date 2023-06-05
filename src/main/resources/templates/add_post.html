@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<section>
+  <h1>Add Post</h1>
+  <form method="post" role="form" th:object="${postDto}" th:action="@{/user/post/save}">
+    Blog:
+      <select th:field="*{blog_id}">
+          <option th:each="blog : ${blogs}" th:value="${blog.getId()}" th:text="${blog.getTitle()}"></option>
+      </select>
+      <br>
+    Title: <input type="text" name="title" id="title" th:field="*{title}" required><br>
+    Content:
+      <textarea id="content" name="content" th:field="*{content}" required></textarea><br>
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+</body>
+</html>
